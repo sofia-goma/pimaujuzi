@@ -1,22 +1,51 @@
 import { createRoot } from 'react-dom/client';
+import { ThemeProvider } from './providers/theme-provider';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import DashboardLayout from './components/layouts/dashboard-layout';
+import Dashboard from './screens/dashboard';
+import Feedback from './screens/feedback';
+import History from './screens/history';
+import Test from './screens/test';
+import Train from './screens/train';
 import './globals.css';
-import { Button } from './components/ui/button';
-import { Bell } from 'lucide-react';
+import Settings from './screens/settings';
 
-function App() {
-  return (
-    <div className='p-4'>
-      <h1 className='text-primary mb-1'>PIMA UJUZI</h1>
-
-      <Button size="lg">
-        Default Button <Bell className='ml-2' />
-      </Button>
-
-    </div>
-  );
-}
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: '/dashboard',
+        element: <Dashboard />
+      },
+      {
+        path: '/dashboard/feedback',
+        element: <Feedback />
+      },
+      {
+        path: '/dashboard/history',
+        element: <History />
+      },
+      {
+        path: '/dashboard/test',
+        element: <Test />
+      },
+      {
+        path: '/dashboard/train',
+        element: <Train />
+      },
+      {
+        path: '/dashboard/settings',
+        element: <Settings />
+      }
+    ]
+  }
+]);
 
 const root = createRoot(document.getElementById('root')!)
 root.render(
-  <App />
+  <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+    <RouterProvider router={router} />
+  </ThemeProvider>
 );
