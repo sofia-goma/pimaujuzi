@@ -1,26 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import {
-  Bell,
+  FlaskConical,
   CircleUser,
   Home,
-  LineChart,
   Menu,
-  Package,
-  Package2,
+  Settings,
+  Goal,
+  ChartPie,
+  MessagesSquare,
+  GraduationCap,
   Search,
-  ShoppingCart,
-  Users,
-} from "lucide-react"
-
-// import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,85 +22,74 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { ModeToggle } from '../mode-toggle';
 
-export const description =
-  "A products dashboard with a sidebar navigation and a main content area. The dashboard has a header with a search input and a user menu. The sidebar has a logo, navigation links, and a card with a call to action. The main content area shows an empty state with a call to action."
 
 export default function DashboardLayout() {
+  const navstyle: string = 'flex items-center gap-3 rounded-lg px-3 py-2  transition-all hover:text-primary';
+  const mobileNavStyle: string = 'mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground';
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <div className="hidden border-r bg-muted/40 md:block">
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
             <Link to="/" className="flex items-center gap-2 font-semibold">
-              <Package2 className="h-6 w-6" />
-              <span className="">Acme Inc</span>
+              <GraduationCap className="h-6 w-6" />
+              <span className="">Pima Ujuzi</span>
             </Link>
-            <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
-              <Bell className="h-4 w-4" />
-              <span className="sr-only">Toggle notifications</span>
-            </Button>
           </div>
           <div className="flex-1">
             <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-              <Link
-                to="#"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              <NavLink
+                end
+                to="/dashboard"
+                className={({ isActive }) => isActive ? `${navstyle} text-primary bg-muted` : navstyle}
               >
                 <Home className="h-4 w-4" />
-                Dashboard
-              </Link>
-              <Link
-                to="#"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+                Tableau de bord
+              </NavLink>
+
+
+              <NavLink
+                to="/dashboard/train"
+                className={({ isActive }) => isActive ? `${navstyle} text-primary bg-muted` : navstyle}
               >
-                <ShoppingCart className="h-4 w-4" />
-                Orders
-                {/* <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                  6
-                </Badge> */}
-              </Link>
-              <Link
-                to="#"
-                className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
+
+                <Goal className="h-4 w-4" />
+                S'entrainer{" "}
+              </NavLink>
+              <NavLink
+                to="/dashboard/test"
+                className={({ isActive }) => isActive ? `${navstyle} text-primary bg-muted` : navstyle}
               >
-                <Package className="h-4 w-4" />
-                Products{" "}
-              </Link>
-              <Link
-                to="#"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+                <FlaskConical className="h-4 w-4" />
+                Tests et évaluation
+              </NavLink>
+              <NavLink
+                to="/dashboard/history"
+                className={({ isActive }) => isActive ? `${navstyle} text-primary bg-muted` : navstyle}
               >
-                <Users className="h-4 w-4" />
-                Customers
-              </Link>
-              <Link
-                to="#"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+                <ChartPie className="h-4 w-4" />
+                Historique
+              </NavLink>
+
+              <NavLink
+                to="/dashboard/settings"
+                className={({ isActive }) => isActive ? `${navstyle} text-primary bg-muted` : navstyle}
               >
-                <LineChart className="h-4 w-4" />
-                Analytics
-              </Link>
+                <Settings className="h-4 w-4" />
+                Paramètres
+              </NavLink>
+              <NavLink
+                to="/dashboard/feedback"
+                className={({ isActive }) => isActive ? `${navstyle} text-primary bg-muted` : navstyle}
+              >
+                <MessagesSquare className="h-4 w-4" />
+                Feedback et support
+              </NavLink>
+
             </nav>
-          </div>
-          <div className="mt-auto p-4">
-            <Card x-chunk="dashboard-02-chunk-0">
-              <CardHeader className="p-2 pt-0 md:p-4">
-                <CardTitle>Upgrade to Pro</CardTitle>
-                <CardDescription>
-                  Unlock all features and get unlimited access to our support
-                  team.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
-                <Button size="sm" className="w-full">
-                  Upgrade
-                </Button>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>
@@ -130,64 +112,58 @@ export default function DashboardLayout() {
                   to="#"
                   className="flex items-center gap-2 text-lg font-semibold"
                 >
-                  <Package2 className="h-6 w-6" />
-                  <span className="sr-only">Acme Inc</span>
+                  <GraduationCap className="h-6 w-6" />
+                  <span className="sr-only">PIMAUJUZI</span>
                 </Link>
-                <Link
-                  to="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+
+                <NavLink
+                  end
+                  to="/dashboard"
+                  className={({ isActive }) => isActive ? `${navstyle} ${mobileNavStyle} text-primary bg-muted` : `${navstyle} ${mobileNavStyle}`}
                 >
                   <Home className="h-5 w-5" />
-                  Dashboard
-                </Link>
-                <Link
-                  to="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
+                  Tableau de bord
+                </NavLink>
+
+                <NavLink
+                  to="/dashboard/train"
+                  className={({ isActive }) => isActive ? `${navstyle} ${mobileNavStyle} text-primary bg-muted` : `${navstyle} ${mobileNavStyle}`}
                 >
-                  <ShoppingCart className="h-5 w-5" />
-                  Orders
-                  {/* <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                    6
-                  </Badge> */}
-                </Link>
-                <Link
-                  to="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                  <Goal className="h-5 w-5" />
+                  S'entrainer{" "}
+                </NavLink>
+
+                <NavLink
+                  to="/dashboard/test"
+                  className={({ isActive }) => isActive ? `${navstyle} ${mobileNavStyle} text-primary bg-muted` : `${navstyle} ${mobileNavStyle}`}
                 >
-                  <Package className="h-5 w-5" />
-                  Products
-                </Link>
-                <Link
-                  to="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                  <FlaskConical className="h-5 w-5" />
+                  Tests et évaluation
+                </NavLink>
+
+                <NavLink
+                  to="/dashboard/history"
+                  className={({ isActive }) => isActive ? `${navstyle} ${mobileNavStyle} text-primary bg-muted` : `${navstyle} ${mobileNavStyle}`}
                 >
-                  <Users className="h-5 w-5" />
-                  Customers
-                </Link>
-                <Link
-                  to="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                  <ChartPie className="h-5 w-5" />
+                  Historique
+                </NavLink>
+                <NavLink
+                  to="/dashboard/settings"
+                  className={({ isActive }) => isActive ? `${navstyle} ${mobileNavStyle} text-primary bg-muted` : `${navstyle} ${mobileNavStyle}`}
                 >
-                  <LineChart className="h-5 w-5" />
-                  Analytics
-                </Link>
+                  <Settings className="h-5 w-5" />
+                  Paramètres
+                </NavLink>
+
+                <NavLink
+                  to="/dashboard/feedback"
+                  className={({ isActive }) => isActive ? `${navstyle} ${mobileNavStyle} text-primary bg-muted` : `${navstyle} ${mobileNavStyle}`}
+                >
+                  <MessagesSquare className="h-5 w-5" />
+                  Feedback et support
+                </NavLink>
               </nav>
-              <div className="mt-auto">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Upgrade to Pro</CardTitle>
-                    <CardDescription>
-                      Unlock all features and get unlimited access to our
-                      support team.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Button size="sm" className="w-full">
-                      Upgrade
-                    </Button>
-                  </CardContent>
-                </Card>
-              </div>
             </SheetContent>
           </Sheet>
           <div className="w-full flex-1">
@@ -196,14 +172,13 @@ export default function DashboardLayout() {
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                 <Input
                   type="search"
-                  placeholder="Search products..."
+                  placeholder="Recherchez un test ou un sujet..."
                   className="w-full appearance-none bg-background pl-8 shadow-none md:w-2/3 lg:w-1/3"
                 />
               </div>
             </form>
           </div>
           <ModeToggle />
-          {/* <ModeToggle /> */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">
@@ -212,7 +187,10 @@ export default function DashboardLayout() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuLabel>
+                <p className='font-bold text-medium'>@Username</p>
+                <p className='text-xs'>name@email.com</p>
+              </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Settings</DropdownMenuItem>
               <DropdownMenuItem>Support</DropdownMenuItem>
@@ -222,24 +200,9 @@ export default function DashboardLayout() {
           </DropdownMenu>
         </header>
         <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
-          <div className="flex items-center">
-            <h1 className="text-lg font-semibold md:text-2xl">Inventory</h1>
-          </div>
-          <div
-            className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm" x-chunk="dashboard-02-chunk-1"
-          >
-            <div className="flex flex-col items-center gap-1 text-center">
-              <h3 className="text-2xl font-bold tracking-tight">
-                You have no products
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                You can start selling as soon as you add a product.
-              </p>
-              <Button className="mt-4">Add Product</Button>
-            </div>
-          </div>
+          <Outlet />
         </main>
       </div>
     </div>
-  )
+  );
 }

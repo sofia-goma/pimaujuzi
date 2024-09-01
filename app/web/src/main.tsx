@@ -1,35 +1,45 @@
 import { createRoot } from 'react-dom/client';
-import { Button } from './components/ui/button';
-import { Bell } from 'lucide-react';
 import { ThemeProvider } from './providers/theme-provider';
-import { ModeToggle } from './components/mode-toggle';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import DashboardLayout from './components/layouts/dashboard-layout';
+import Dashboard from './screens/dashboard';
+import Feedback from './screens/feedback';
+import History from './screens/history';
+import Test from './screens/test';
+import Train from './screens/train';
 import './globals.css';
-
-function App() {
-  const message: IMessage = { message: "Hello world!" }
-  console.log(message);
-  return (
-    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
-
-      <div className='p-4'>
-        <ModeToggle />
-        <h1 className='text-primary mb-1'>PIMA UJUZI</h1>
-
-        <Button size="lg">
-          Default Button <Bell className='ml-2' />
-        </Button>
-
-      </div>
-    </ThemeProvider>
-  );
-}
+import Settings from './screens/settings';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <DashboardLayout />
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: '/dashboard',
+        element: <Dashboard />
+      },
+      {
+        path: '/dashboard/feedback',
+        element: <Feedback />
+      },
+      {
+        path: '/dashboard/history',
+        element: <History />
+      },
+      {
+        path: '/dashboard/test',
+        element: <Test />
+      },
+      {
+        path: '/dashboard/train',
+        element: <Train />
+      },
+      {
+        path: '/dashboard/settings',
+        element: <Settings />
+      }
+    ]
   }
 ]);
 
