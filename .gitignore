@@ -68,3 +68,5 @@ yarn-error.log*
 
 node_modules
 dist
+
+/apps/api/node_modules
