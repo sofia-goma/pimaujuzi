@@ -1,13 +1,50 @@
 {
+  "name": "pimaujuzi",
   "scripts": {
     "changeset": "changeset",
     "version": "changeset version",
-    "changelog": "changeset changelog"
+    "changelog": "changeset changelog",
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "prepare": "husky install",
+    "start": "node apps/api/dist/main",
+    "test": ""
   },
   "dependencies": {
     "turbo": "^2.1.1"
   },
   "devDependencies": {
-    "changesets": "^1.0.2"
-  }
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "changesets": "^1.0.2",
+    "eslint": "^9.11.1",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-plugin-import": "^2.30.0",
+    "eslint-plugin-react": "^7.37.0",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
+  },
+  "packageManager": "pnpm@8.15.6",
+  "engines": {
+    "node": ">=18"
+  },
+  "lint-staged": {
+    "apps/**/*.{js,ts,jsx,tsx}": [
+      "eslint --fix"
+    ],
+    "packages/ui/**/*.{js,ts,jsx,tsx}": [
+      "eslint --fix"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
+  },
+  "workspaces": [
+    "apps/*"
+  ]
 }
