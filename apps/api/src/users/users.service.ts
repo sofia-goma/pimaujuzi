@@ -2,12 +2,17 @@ import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { DatabaseService } from 'src/database/database.service';
 import { encryptPassword } from './utils/encrypt-password';
+import { isValidEmail } from './utils/valid-email';
 
 @Injectable()
 export class UsersService {
   constructor(private readonly databaseService: DatabaseService) {}
 
   async create(createUserDto: Prisma.UserCreateInput) {
+    const validEmail = isValidEmail(createUserDto.email);
+    if (!validEmail) {
+      return 'Please enter a valid email';
+    }
     /**
      * hash password in order to store it in the data
      * warning: Don't store plain text into a database
@@ -36,6 +41,7 @@ export class UsersService {
           nickname,
         },
         select: {
+          id: true,
           nickname: true,
           picture: true,
           pictureId: true,
@@ -48,6 +54,7 @@ export class UsersService {
     }
     return this.databaseService.user.findMany({
       select: {
+        id: true,
         nickname: true,
         picture: true,
         pictureId: true,
@@ -65,6 +72,7 @@ export class UsersService {
         id,
       },
       select: {
+        id: true,
         nickname: true,
         picture: true,
         pictureId: true,
@@ -76,7 +84,27 @@ export class UsersService {
     });
   }
 
-  update(id: string, updateUserDto: Prisma.UserUpdateInput) {
+  async findOneByEmail(email: string) {
+    const validEmail = isValidEmail(email);
+    if (!validEmail) {
+      return 'Use valid email';
+    }
+    return this.databaseService.user.findUnique({
+      where: { email },
+      select: {
+        id: true,
+        nickname: true,
+        picture: true,
+        pictureId: true,
+        password: false,
+        created: true,
+        updated: true,
+        email: true,
+      },
+    });
+  }
+
+  async update(id: string, updateUserDto: Prisma.UserUpdateInput) {
     return this.databaseService.user.update({
       where: {
         id,
@@ -94,7 +122,7 @@ export class UsersService {
     });
   }
 
-  remove(id: string) {
+  async remove(id: string) {
     return this.databaseService.user.delete({
       where: {
         id,

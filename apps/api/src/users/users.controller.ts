@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   Query,
+  Logger,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { Prisma } from '@prisma/client';
@@ -18,6 +19,11 @@ export class UsersController {
   @Post()
   create(@Body() createUserDto: Prisma.UserCreateInput) {
     return this.usersService.create(createUserDto);
+  }
+
+  @Get('me')
+  findOneByEmail(@Body() user: { email: string }) {
+    return this.usersService.findOneByEmail(user.email);
   }
 
   @Get()

@@ -1,5 +1,19 @@
 {
   "name": "pimaujuzi",
+  "author": "SOFIA <sofiadevgoma@gmail.com>",
+  "description": "",
+  "bugs": "https://github.com/sofia-goma/pimaujuzi/issues",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sofia-goma/pimaujuzi.git"
+  },
+  "files": [
+    "apps",
+    "LICENSE",
+    "README.md",
+    "SECURITY.md"
+  ],
   "scripts": {
     "changeset": "changeset",
     "version": "changeset version",
@@ -46,5 +60,7 @@
   },
   "workspaces": [
     "apps/*"
-  ]
+  ],
+  "readmeFilename": "README.md",
+  "license": "Apache License, Version 2.0"
 }
