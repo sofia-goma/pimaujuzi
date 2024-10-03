@@ -6,6 +6,7 @@ import { join } from 'path';
 import { UsersModule } from './users/users.module';
 import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './auth/auth.module';
+import { QuestionsModule } from './questions/questions.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { AuthModule } from './auth/auth.module';
     UsersModule,
     DatabaseModule,
     AuthModule,
+    QuestionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
