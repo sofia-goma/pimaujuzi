@@ -18,36 +18,31 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
+    element: <DashboardLayout />,
     children: [
       {
-        path: "/dashboard",
-        element: <DashboardLayout />,
-        children: [
-          {
-            path: "/dashboard",
-            element: <Dashboard />,
-          },
-          {
-            path: "/dashboard/feedback",
-            element: <Feedback />,
-          },
-          {
-            path: "/dashboard/history",
-            element: <History />,
-          },
-          {
-            path: "/dashboard/test",
-            element: <Test />,
-          },
-          {
-            path: "/dashboard/train",
-            element: <Train />,
-          },
-          {
-            path: "/dashboard/settings",
-            element: <Settings />,
-          },
-        ],
+        path: "", // This is the index route
+        element: <Dashboard />,
+      },
+      {
+        path: "feedback",
+        element: <Feedback />,
+      },
+      {
+        path: "history",
+        element: <History />,
+      },
+      {
+        path: "test",
+        element: <Test />,
+      },
+      {
+        path: "train",
+        element: <Train />,
+      },
+      {
+        path: "settings",
+        element: <Settings />,
       },
     ],
   },
