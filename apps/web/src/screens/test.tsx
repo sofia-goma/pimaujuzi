@@ -1,3 +1,4 @@
+import TestSelection from '@/components/home/TestSelection';
 import React from 'react';
 import { FaQuestionCircle, FaBook } from 'react-icons/fa'; // Icons for the question types
 
@@ -47,9 +48,12 @@ const QuestionCard: React.FC<{
 
 // Main Test component
 export default function Test() {
-  return (
+  return (<>
+  <h1>Test Page</h1>
+    <TestSelection />
     <div>
       <h1>Test</h1>
+      
       <div style={{ display: 'flex', gap: '16px' }}>
         {/* Question Card 1 */}
         <QuestionCard
@@ -66,6 +70,6 @@ export default function Test() {
           icon={<FaBook size={40} color="#f57c00" />}
         />
       </div>
-    </div>
+    </div></>
   );
 }
