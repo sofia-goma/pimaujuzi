@@ -29,8 +29,19 @@ model User {
   created   DateTime @default(now())
   updated   DateTime @updatedAt
   role      Role     @default(user)
+  opt         Otp?
 
   @@map("user")
+}
+
+model Otp {
+  otpId       String     @id @default(cuid()) @map("otp_id")
+  code        String     @map("code")
+  expiresAt   DateTime   @map("expires_at")
+  userId      String     @unique @map("user_id")
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("otp")
 }
 
 // Question Model
