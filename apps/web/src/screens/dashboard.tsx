@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
 
 export default function Dashboard() {
   const [greeting, setGreeting] = useState("");
@@ -12,6 +13,9 @@ export default function Dashboard() {
     <>
       <h1>{greeting} From my proxy api</h1>
       <h1>Dashboard</h1>
+      <h1>
+        <FormattedMessage id="welcome" defaultMessage="Welcome" />
+      </h1>
     </>
   );
 }

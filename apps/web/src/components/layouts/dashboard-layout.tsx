@@ -1,5 +1,5 @@
-import { Outlet } from 'react-router-dom';
-import { Link, NavLink } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
   FlaskConical,
   CircleUser,
@@ -21,14 +21,18 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { ModeToggle } from '../mode-toggle';
-
+} from "@/components/ui/dropdown-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { ModeToggle } from "../mode-toggle";
+import { useLanguage } from "@/lib/utils";
+import LanguageToggle from "../lang-toggle";
 
 export default function DashboardLayout() {
-  const navstyle: string = 'flex items-center gap-3 rounded-lg px-3 py-2  transition-all hover:text-primary';
-  const mobileNavStyle: string = 'mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground';
+  const { locale, switchLanguage } = useLanguage();
+  const navstyle: string =
+    "flex items-center gap-3 rounded-lg px-3 py-2  transition-all hover:text-primary";
+  const mobileNavStyle: string =
+    "mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground";
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <div className="hidden border-r bg-muted/40 md:block">
@@ -44,31 +48,37 @@ export default function DashboardLayout() {
               <NavLink
                 end
                 to="/dashboard"
-                className={({ isActive }) => isActive ? `${navstyle} text-primary bg-muted` : navstyle}
+                className={({ isActive }) =>
+                  isActive ? `${navstyle} text-primary bg-muted` : navstyle
+                }
               >
                 <Home className="h-4 w-4" />
                 Tableau de bord
               </NavLink>
 
-
               <NavLink
                 to="/dashboard/train"
-                className={({ isActive }) => isActive ? `${navstyle} text-primary bg-muted` : navstyle}
+                className={({ isActive }) =>
+                  isActive ? `${navstyle} text-primary bg-muted` : navstyle
+                }
               >
-
                 <Goal className="h-4 w-4" />
                 S'entrainer{" "}
               </NavLink>
               <NavLink
                 to="/dashboard/test"
-                className={({ isActive }) => isActive ? `${navstyle} text-primary bg-muted` : navstyle}
+                className={({ isActive }) =>
+                  isActive ? `${navstyle} text-primary bg-muted` : navstyle
+                }
               >
                 <FlaskConical className="h-4 w-4" />
                 Tests et évaluation
               </NavLink>
               <NavLink
                 to="/dashboard/history"
-                className={({ isActive }) => isActive ? `${navstyle} text-primary bg-muted` : navstyle}
+                className={({ isActive }) =>
+                  isActive ? `${navstyle} text-primary bg-muted` : navstyle
+                }
               >
                 <ChartPie className="h-4 w-4" />
                 Historique
@@ -76,19 +86,22 @@ export default function DashboardLayout() {
 
               <NavLink
                 to="/dashboard/settings"
-                className={({ isActive }) => isActive ? `${navstyle} text-primary bg-muted` : navstyle}
+                className={({ isActive }) =>
+                  isActive ? `${navstyle} text-primary bg-muted` : navstyle
+                }
               >
                 <Settings className="h-4 w-4" />
                 Paramètres
               </NavLink>
               <NavLink
                 to="/dashboard/feedback"
-                className={({ isActive }) => isActive ? `${navstyle} text-primary bg-muted` : navstyle}
+                className={({ isActive }) =>
+                  isActive ? `${navstyle} text-primary bg-muted` : navstyle
+                }
               >
                 <MessagesSquare className="h-4 w-4" />
                 Feedback et support
               </NavLink>
-
             </nav>
           </div>
         </div>
@@ -119,7 +132,11 @@ export default function DashboardLayout() {
                 <NavLink
                   end
                   to="/dashboard"
-                  className={({ isActive }) => isActive ? `${navstyle} ${mobileNavStyle} text-primary bg-muted` : `${navstyle} ${mobileNavStyle}`}
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${navstyle} ${mobileNavStyle} text-primary bg-muted`
+                      : `${navstyle} ${mobileNavStyle}`
+                  }
                 >
                   <Home className="h-5 w-5" />
                   Tableau de bord
@@ -127,7 +144,11 @@ export default function DashboardLayout() {
 
                 <NavLink
                   to="/dashboard/train"
-                  className={({ isActive }) => isActive ? `${navstyle} ${mobileNavStyle} text-primary bg-muted` : `${navstyle} ${mobileNavStyle}`}
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${navstyle} ${mobileNavStyle} text-primary bg-muted`
+                      : `${navstyle} ${mobileNavStyle}`
+                  }
                 >
                   <Goal className="h-5 w-5" />
                   S'entrainer{" "}
@@ -135,7 +156,11 @@ export default function DashboardLayout() {
 
                 <NavLink
                   to="/dashboard/test"
-                  className={({ isActive }) => isActive ? `${navstyle} ${mobileNavStyle} text-primary bg-muted` : `${navstyle} ${mobileNavStyle}`}
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${navstyle} ${mobileNavStyle} text-primary bg-muted`
+                      : `${navstyle} ${mobileNavStyle}`
+                  }
                 >
                   <FlaskConical className="h-5 w-5" />
                   Tests et évaluation
@@ -143,14 +168,22 @@ export default function DashboardLayout() {
 
                 <NavLink
                   to="/dashboard/history"
-                  className={({ isActive }) => isActive ? `${navstyle} ${mobileNavStyle} text-primary bg-muted` : `${navstyle} ${mobileNavStyle}`}
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${navstyle} ${mobileNavStyle} text-primary bg-muted`
+                      : `${navstyle} ${mobileNavStyle}`
+                  }
                 >
                   <ChartPie className="h-5 w-5" />
                   Historique
                 </NavLink>
                 <NavLink
                   to="/dashboard/settings"
-                  className={({ isActive }) => isActive ? `${navstyle} ${mobileNavStyle} text-primary bg-muted` : `${navstyle} ${mobileNavStyle}`}
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${navstyle} ${mobileNavStyle} text-primary bg-muted`
+                      : `${navstyle} ${mobileNavStyle}`
+                  }
                 >
                   <Settings className="h-5 w-5" />
                   Paramètres
@@ -158,7 +191,11 @@ export default function DashboardLayout() {
 
                 <NavLink
                   to="/dashboard/feedback"
-                  className={({ isActive }) => isActive ? `${navstyle} ${mobileNavStyle} text-primary bg-muted` : `${navstyle} ${mobileNavStyle}`}
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${navstyle} ${mobileNavStyle} text-primary bg-muted`
+                      : `${navstyle} ${mobileNavStyle}`
+                  }
                 >
                   <MessagesSquare className="h-5 w-5" />
                   Feedback et support
@@ -179,6 +216,12 @@ export default function DashboardLayout() {
             </form>
           </div>
           <ModeToggle />
+          <LanguageToggle
+            switchLanguage={() =>
+              locale == "fr" ? switchLanguage("en") : switchLanguage("fr")
+            }
+            locale={locale}
+          />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">
@@ -188,8 +231,8 @@ export default function DashboardLayout() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>
-                <p className='font-bold text-medium'>@Username</p>
-                <p className='text-xs'>name@email.com</p>
+                <p className="font-bold text-medium">@Username</p>
+                <p className="text-xs">name@email.com</p>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Settings</DropdownMenuItem>

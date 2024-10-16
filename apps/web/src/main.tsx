@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
 import { ThemeProvider } from "./providers/theme-provider";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import IntlProviderWrapper from "./providers/intl-provider";
 import DashboardLayout from "./components/layouts/dashboard-layout";
 import Dashboard from "./screens/dashboard";
 import Feedback from "./screens/feedback";
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
     element: <DashboardLayout />,
     children: [
       {
-        path: "", // This is the index route
+        path: "",
         element: <Dashboard />,
       },
       {
@@ -47,10 +48,11 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
 const root = createRoot(document.getElementById("root")!);
 root.render(
   <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
-    <RouterProvider router={router} />
+    <IntlProviderWrapper>
+      <RouterProvider router={router} />
+    </IntlProviderWrapper>
   </ThemeProvider>
 );
