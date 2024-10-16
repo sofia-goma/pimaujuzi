@@ -1,3 +1,5 @@
 interface IMessage {
-    message: string;
+  message: string;
 }
+
+type Lang = "fr" | "en";
