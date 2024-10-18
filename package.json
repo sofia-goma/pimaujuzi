@@ -60,7 +60,8 @@
     ]
   },
   "workspaces": [
-    "apps/*"
+    "apps/api",
+    "apps/web"
   ],
   "readmeFilename": "README.md",
   "license": "Apache License, Version 2.0"

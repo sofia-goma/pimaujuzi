@@ -1,5 +1,10 @@
+import Loading from "./loading";
+
 export default function Settings() {
-    return (
-        <h1>Settings</h1>
-    );
+  return (
+    <>
+      <Loading />
+      <h1>Settings</h1>
+    </>
+  );
 }
