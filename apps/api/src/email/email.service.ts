@@ -6,7 +6,7 @@ import * as path from 'path';
 import { Transporter } from 'nodemailer';
 
 @Injectable()
-export class MailService {
+export class EmailService {
   private transporter: Transporter;
 
   constructor(private configService: typeof emailConfig) {
