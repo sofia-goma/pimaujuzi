@@ -1,5 +1,16 @@
 {
   "welcome": "Bienvenue",
   "dashboard": "Tableau de bord",
-  "feedback": "Retour d'expérience"
+  "feedback": "Retour d'expérience",
+  "settings": "Paramètres",
+  "language": "Langue",
+  "notifications": "Notifications",
+  "darkMode": "Mode sombre",
+  "email": "E-mail",
+  "changePassword": "Changer le mot de passe",
+  "saveChanges": "Enregistrer les modifications",
+  "privacyPolicy": "Politique de Confidentialité",
+  "privacyPolicyDescription": "Lisez notre politique de confidentialité pour comprendre comment nous traitons vos données.",
+  "readPrivacyPolicy": "Lire la Politique de Confidentialité",
+  "developedBy": "Développé par l'équipe Sofia"
 }
