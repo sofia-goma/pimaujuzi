@@ -1,5 +1,16 @@
 {
   "welcome": "Welcome",
   "dashboard": "Dashboard",
-  "feedback": "Feedback"
+  "feedback": "Feedback",
+  "settings": "Settings",
+  "language": "Language",
+  "notifications": "Notifications",
+  "darkMode": "Dark Mode",
+  "email": "Email",
+  "changePassword": "Change Password",
+  "saveChanges": "Save Changes",
+  "privacyPolicy": "Privacy Policy",
+  "privacyPolicyDescription": "Read our privacy policy to understand how we handle your data.",
+  "readPrivacyPolicy": "Read Privacy Policy",
+  "developedBy": "Developed by Sofia Team"
 }
