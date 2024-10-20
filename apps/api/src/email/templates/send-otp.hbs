@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <style>
+      body { font-family: 'Helvetica Neue', sans-serif; background-color:
+      #f0f0f5; margin: 0; padding: 0; } .container { width: 100%; max-width:
+      600px; margin: 30px auto; background-color: #ffffff; padding: 25px;
+      border-radius: 10px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); border:
+      1px solid #e0e0e0; } .header { text-align: center; padding: 25px 0;
+      background-color: #3e3e59; color: #ffffff; font-size: 26px; font-weight:
+      600; border-radius: 10px 10px 0 0; } .content { padding: 20px; text-align:
+      center; color: #4a4a4a; } .content p { font-size: 16px; line-height: 1.6;
+      margin: 15px 0; } .otp-code { font-size: 22px; font-weight: bold; color:
+      #ff914d; } .footer { text-align: center; padding: 20px 0; font-size: 14px;
+      color: #7e7e7e; } .footer a { color: #3e3e59; text-decoration: none;
+      font-weight: 500; }
+    </style>
+  </head>
+  <body>
+    <div class='container'>
+      <div class='header'>Your OTP Code</div>
+      <div class='content'>
+        <p>Hello {{firstName}},</p>
+        <p>Your one-time password (OTP) is:</p>
+        <p class='otp-code'>{{otpCode}}</p>
+        <p>
+          This code will expire in
+          <span id='countdown'>{{expiresIn}}</span>
+          minutes.
+        </p>
+        <p>If you didn't request this, you can safely ignore this email.</p>
+      </div>
+      <div class='footer'>
+        <p>Need help? <a href='{{supportLink}}'>Contact Support</a></p>
+      </div>
+    </div>
+  </body>
+</html>
