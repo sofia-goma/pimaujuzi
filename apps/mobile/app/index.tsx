@@ -1,12 +1,14 @@
+import { useRouter } from "expo-router";
 import { View, ScrollView, FlatList } from "react-native";
 import LottieView from "lottie-react-native";
 import { QuestionCard, CourseLabel } from "@/components/";
-import AntDesign from "@expo/vector-icons/AntDesign";
 import { courseLabel } from "@/data/course-label";
 import { questionTemplate } from "@/data/question-template";
+
 export default function Index() {
+  const router = useRouter();
   return (
-    <ScrollView className="flex-1">
+    <ScrollView className="flex-1 bg-background">
       <View className="flex-1 p-4">
         <View className="flex-row gap-2 items-center mb-2">
           <FlatList
@@ -24,18 +26,19 @@ export default function Index() {
                 title={item.title}
                 totalQuestions={item.totalQuestions}
                 completedQuestions={item.completedQuestions}
-                icon={<AntDesign name="book" size={52} color="black" />}
+                icon={item.icon}
+                handlePress={() => router.push("/43")}
               />
             )}
           />
         </View>
 
-        <LottieView
+        {/* <LottieView
           source={require("../assets/animations/welcome.json")}
           autoPlay
           loop
           style={{ width: 400, height: 400 }}
-        />
+        /> */}
       </View>
     </ScrollView>
   );
