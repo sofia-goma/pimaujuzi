@@ -42,6 +42,15 @@ export default function Layout() {
             }}
           />
           <Drawer.Screen
+            name="workspace"
+            options={{
+              title: "Espace de Travail",
+              drawerIcon: ({ color, size }) => (
+                <MaterialIcons name="work" size={size} color={color} />
+              ),
+            }}
+          />
+          <Drawer.Screen
             name="account"
             options={{
               title: "Mon Compte",
@@ -66,6 +75,24 @@ export default function Layout() {
               drawerIcon: ({ color, size }) => (
                 <MaterialIcons name="feedback" size={size} color={color} />
               ),
+            }}
+          />
+          <Drawer.Screen
+            name="[questionId]"
+            options={{
+              title: "Entrainement",
+              drawerItemStyle: {
+                display: "none",
+              },
+            }}
+          />
+          <Drawer.Screen
+            name="+not-found"
+            options={{
+              title: "Not Found",
+              drawerItemStyle: {
+                display: "none",
+              },
             }}
           />
         </Drawer>
