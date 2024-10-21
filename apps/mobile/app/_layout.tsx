@@ -1,37 +1,102 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { Drawer } from "expo-router/drawer";
+import { TabBarIcon } from "@/components/";
+import { StatusBar } from "expo-status-bar";
+import { DrawerContent } from "@/components/";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import Feather from "@expo/vector-icons/Feather";
 
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
+export default function Layout() {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-    </ThemeProvider>
+    <>
+      <StatusBar style="light" backgroundColor="#2563eb" />
+      <GestureHandlerRootView className="flex-1">
+        <Drawer
+          initialRouteName="index"
+          drawerContent={(props) => <DrawerContent {...props} />}
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: "#2563eb",
+            },
+            headerTitleStyle: {
+              color: "#fff",
+            },
+          }}
+        >
+          <Drawer.Screen
+            name="index"
+            options={{
+              title: "Acceuil",
+              drawerIcon: ({ color, size }) => (
+                <TabBarIcon name="home" size={size} color={color} />
+              ),
+            }}
+          />
+          <Drawer.Screen
+            name="test"
+            options={{
+              title: "Test",
+              drawerIcon: ({ color, size }) => (
+                <MaterialIcons name="science" size={size} color={color} />
+              ),
+            }}
+          />
+          <Drawer.Screen
+            name="workspace"
+            options={{
+              title: "Espace de Travail",
+              drawerIcon: ({ color, size }) => (
+                <MaterialIcons name="work" size={size} color={color} />
+              ),
+            }}
+          />
+          <Drawer.Screen
+            name="account"
+            options={{
+              title: "Mon Compte",
+              drawerIcon: ({ color, size }) => (
+                <Feather name="user" size={size} color={color} />
+              ),
+            }}
+          />
+          <Drawer.Screen
+            name="settings"
+            options={{
+              title: "Settings",
+              drawerIcon: ({ color, size }) => (
+                <TabBarIcon name="settings" size={size} color={color} />
+              ),
+            }}
+          />
+          <Drawer.Screen
+            name="feedback"
+            options={{
+              title: "Feedback",
+              drawerIcon: ({ color, size }) => (
+                <MaterialIcons name="feedback" size={size} color={color} />
+              ),
+            }}
+          />
+          <Drawer.Screen
+            name="[questionId]"
+            options={{
+              title: "Entrainement",
+              drawerItemStyle: {
+                display: "none",
+              },
+            }}
+          />
+          <Drawer.Screen
+            name="+not-found"
+            options={{
+              title: "Not Found",
+              drawerItemStyle: {
+                display: "none",
+              },
+            }}
+          />
+        </Drawer>
+      </GestureHandlerRootView>
+    </>
   );
 }
