@@ -11,7 +11,7 @@ export class UsersService {
   async create(createUserDto: Prisma.UserCreateInput) {
     const validEmail = isValidEmail(createUserDto.email);
     if (!validEmail) {
-      return 'Please enter a valid email';
+      return null;
     }
     /**
      * hash password in order to store it in the data
@@ -87,7 +87,7 @@ export class UsersService {
   async findOneByEmail(email: string) {
     const validEmail = isValidEmail(email);
     if (!validEmail) {
-      return 'Use valid email';
+      return null;
     }
     return this.databaseService.user.findUnique({
       where: { email },
