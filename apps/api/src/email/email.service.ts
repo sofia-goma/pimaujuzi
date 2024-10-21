@@ -4,6 +4,7 @@ import * as hbs from 'nodemailer-express-handlebars';
 import emailConfig from 'src/config/email.config';
 import * as path from 'path';
 import { Transporter } from 'nodemailer';
+import { addMinutes, differenceInMinutes } from 'date-fns';
 
 @Injectable()
 export class EmailService {
@@ -37,15 +38,39 @@ export class EmailService {
     this.transporter.use('compile', hbs(hbsConfig));
   }
 
-  async sendMail(to: string, subject: string, template: string, context: any) {
+  async sendMail(options) {
     const mailOptions = {
       from: this.configService.user,
-      to,
-      subject,
-      template,
-      context,
+      to: options.to,
+      subject: options.subject,
+      template: options.template,
+      context: options.context,
     };
 
     await this.transporter.sendMail(mailOptions);
+  }
+  async sendOtpEmail(
+    email: string,
+    otpCode: string,
+    firstName: string,
+    expiresAt: Date,
+  ): Promise<void> {
+    const expiresIn = differenceInMinutes(expiresAt, new Date());
+    try {
+      const mailOptions = {
+        to: email,
+        subject: 'One Time Password',
+        template: 'send-otp',
+        context: {
+          firstName,
+          otpCode,
+          expiresIn,
+        },
+      };
+
+      await this.sendMail(mailOptions);
+    } catch (error: any) {
+      throw new Error(error);
+    }
   }
 }
