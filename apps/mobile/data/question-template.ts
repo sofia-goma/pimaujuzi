@@ -1,0 +1,92 @@
+export const questionTemplate = [
+  {
+    title: "Fonction Sinus",
+    totalQuestions: 10,
+    completedQuestions: 3,
+    icon: "book",
+  },
+  {
+    title: "Algèbre Linéaire",
+    totalQuestions: 12,
+    completedQuestions: 8,
+    icon: "calculator",
+  },
+  {
+    title: "Équations Différentielles",
+    totalQuestions: 15,
+    completedQuestions: 7,
+    icon: "pencil",
+  },
+  {
+    title: "Probabilités",
+    totalQuestions: 20,
+    completedQuestions: 15,
+    icon: "piechart",
+  },
+  {
+    title: "Géométrie Analytique",
+    totalQuestions: 8,
+    completedQuestions: 6,
+    icon: "ruler",
+  },
+  {
+    title: "Intégrales",
+    totalQuestions: 10,
+    completedQuestions: 5,
+    icon: "book",
+  },
+  {
+    title: "Matrices",
+    totalQuestions: 9,
+    completedQuestions: 4,
+    icon: "grid",
+  },
+  {
+    title: "Calcul Vectoriel",
+    totalQuestions: 11,
+    completedQuestions: 6,
+    icon: "compass",
+  },
+  {
+    title: "Fonctions Trigonométriques",
+    totalQuestions: 13,
+    completedQuestions: 10,
+    icon: "piechart",
+  },
+  {
+    title: "Analyse Complexe",
+    totalQuestions: 14,
+    completedQuestions: 8,
+    icon: "function",
+  },
+  {
+    title: "Algorithmes",
+    totalQuestions: 18,
+    completedQuestions: 12,
+    icon: "code",
+  },
+  {
+    title: "Calcul Différentiel",
+    totalQuestions: 16,
+    completedQuestions: 9,
+    icon: "pencil",
+  },
+  {
+    title: "Physique Quantique",
+    totalQuestions: 12,
+    completedQuestions: 6,
+    icon: "experiment",
+  },
+  {
+    title: "Statistiques",
+    totalQuestions: 20,
+    completedQuestions: 13,
+    icon: "barschart",
+  },
+  {
+    title: "Théorie des Graphes",
+    totalQuestions: 10,
+    completedQuestions: 5,
+    icon: "linechart",
+  },
+];
