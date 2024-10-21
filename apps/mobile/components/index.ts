@@ -1,3 +1,5 @@
 import { TabBarIcon } from "./tab-bar-icon";
-
-export { TabBarIcon };
+import { DrawerContent } from "./drawer-content";
+import { QuestionCard } from "./question-card";
+import { CourseLabel } from "./course-label";
+export { TabBarIcon, DrawerContent, QuestionCard, CourseLabel };
