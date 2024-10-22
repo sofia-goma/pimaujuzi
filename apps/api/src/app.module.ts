@@ -5,6 +5,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { UsersModule } from './users/users.module';
 import { DatabaseModule } from './database/database.module';
+import { OtpModule } from './otp/otp.module';
 import { AuthModule } from './auth/auth.module';
 import { QuestionsModule } from './questions/questions.module';
 
@@ -12,11 +13,12 @@ import { QuestionsModule } from './questions/questions.module';
   imports: [
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../..', 'web', 'dist'),
-      exclude: ['api/*']
+      exclude: ['api/*'],
     }),
     UsersModule,
     DatabaseModule,
     AuthModule,
+    OtpModule,
     QuestionsModule,
   ],
   controllers: [AppController],
